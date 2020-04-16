@@ -11,5 +11,5 @@ Denne seksjonen definerer rettingslinjene for å bidra med kode til dette reposi
    `01 - En beskrivende tekst`, skal ditt bidrag da være `02 - Denne teksten forklarer noe`
 3. Alle bidrag skal følge samme struktur. README.md filen skal inneholde en kort beskrivelse av formålet og koden. Eksempel på en slik struktur er:    
    📦01 - Introduction to MassTransit  
-   ┣ 📂src. 
+   ┣ 📂src<br/>
    ┗ 📜README.md
