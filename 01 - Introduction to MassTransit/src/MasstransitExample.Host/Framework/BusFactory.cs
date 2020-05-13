@@ -11,9 +11,9 @@ namespace MasstransitExample.Host.Framework
             return Bus.Factory.CreateUsingRabbitMq(configuration =>
             {
                 configuration.Host("rabbitmq://localhost");
-                configuration.ReceiveEndpoint(nameof(Message), endpointConfigurator =>
+                configuration.ReceiveEndpoint(nameof(SomethingHappendEvent), endpointConfigurator =>
                 {
-                    endpointConfigurator.Handler<Message>(context =>
+                    endpointConfigurator.Handler<SomethingHappendEvent>(context =>
                     {
                         Console.WriteLine("Inside my consumer. Content of message was: " + context.Message.Content);
                         return null;

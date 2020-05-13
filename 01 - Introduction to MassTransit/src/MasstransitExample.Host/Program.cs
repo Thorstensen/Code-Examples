@@ -13,7 +13,7 @@ namespace MasstransitExample.Host
             var bus = BusFactory.CreateForRabbitMq();
             await bus.StartAsync();
             
-            await bus.Publish(new Message
+            await bus.Publish(new SomethingHappendEvent
             {
                 Content = "Hello, World"
             });
