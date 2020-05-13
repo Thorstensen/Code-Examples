@@ -12,13 +12,25 @@ namespace MasstransitExample.Host
         {
             var bus = BusFactory.CreateForRabbitMq();
             await bus.StartAsync();
-            
-            await bus.Publish(new SomethingHappendEvent
-            {
-                Content = "Hello, World"
-            });
 
-            await Task.Run(() => Console.ReadKey());
+            do
+            {
+                var value = await Task.Run(() =>
+                {
+                    Console.WriteLine("Enter a message to publish. Enter 'quit' to quit");
+                    return Console.ReadLine();
+                });
+
+                if (value.Equals("quit"))
+                    break;
+
+                await bus.Publish(new SomethingHappendEvent
+                {
+                    Content = value
+                });
+            } 
+            while (true);
+
             await bus.StopAsync();
         }
     }
