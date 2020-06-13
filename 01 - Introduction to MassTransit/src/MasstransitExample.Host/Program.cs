@@ -21,15 +21,14 @@ namespace MasstransitExample.Host
                     return Console.ReadLine();
                 });
 
-                if (value.Equals("quit"))
+                if (value.Equals("q"))
                     break;
 
                 await bus.Publish(new SomethingHappendEvent
                 {
                     Content = value
                 });
-            } 
-            while (true);
+            } while (true);
 
             await bus.StopAsync();
         }
