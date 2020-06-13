@@ -26,7 +26,7 @@ namespace MasstransitExample.Autofac.Host
             {
                 var value = await Task.Run(() =>
                 {
-                    Console.WriteLine("Enter a message to publish. Enter 'quit' to quit");
+                    Console.WriteLine("Enter a message to publish. Enter 'q' to quit");
                     return Console.ReadLine();
                 });
         
