@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Autofac;
-using GreenPipes;
 using MassTransit;
 using MasstransitExample.Autofac.Host.Events;
 
@@ -17,9 +15,12 @@ namespace MasstransitExample.Autofac.Host
             
             containerBuilder.ConfigureMasstransit();
             var container = containerBuilder.Build();
-
+        
             var busControl = container.Resolve<IBusControl>();
+            
+            Console.WriteLine("Starting bus");
             await busControl.StartAsync();
+            Console.WriteLine("Bus has started");
             
             do
             {
@@ -28,10 +29,10 @@ namespace MasstransitExample.Autofac.Host
                     Console.WriteLine("Enter a message to publish. Enter 'quit' to quit");
                     return Console.ReadLine();
                 });
-
+        
                 if (value.Equals("q"))
                     break;
-
+        
                 await busControl.Publish(new SomethingCrazyHappendEvent
                 {
                     What = value
