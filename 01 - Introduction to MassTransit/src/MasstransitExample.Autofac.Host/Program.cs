@@ -22,7 +22,8 @@ namespace MasstransitExample.Autofac.Host
             await busControl.StartAsync();
             Console.WriteLine("Bus has started");
 
-            for (var i = 0; i < 100; i++)
+            var numberOfMessagesToPublish = 100;
+            for (var i = 0; i < numberOfMessagesToPublish; i++)
             {
                 var msg = new SomethingCrazyHappendEvent
                 {
@@ -31,6 +32,8 @@ namespace MasstransitExample.Autofac.Host
                 
                 await busControl.Publish(msg);
             }
+            
+            Console.WriteLine($"Finished publishing {numberOfMessagesToPublish} events to RabbitMQ. Bye!");
         }
     }
 }

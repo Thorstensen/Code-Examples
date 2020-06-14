@@ -8,7 +8,7 @@ namespace MasstransitExample.Autofac.Host
         public void Greet(string message)
         {
             var threadId = Thread.CurrentThread.ManagedThreadId;
-            Console.WriteLine($"Greeting from thread '{threadId}'. Message '{message}'");
+            Console.WriteLine($"Greetings from thread '{threadId}'. Message '{message}'");
         }
     }
 
