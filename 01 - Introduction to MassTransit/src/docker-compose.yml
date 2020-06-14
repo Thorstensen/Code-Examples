@@ -1,0 +1,22 @@
+version: "3"
+services:
+  rabbit:
+    container_name: rabbitmq-3.6.6
+    hostname: rabbit
+    image: rabbitmq:3.6.6-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5672"]
+      interval: 5s
+      timeout: 15s
+      retries: 1
+  #masstransit:
+  #  container_name: masstransit.demo
+  #  network_mode: host
+  #  build: .
+  #  restart: on-failure
+  #  command: -network host
+  #  depends_on:
+  #    - rabbit

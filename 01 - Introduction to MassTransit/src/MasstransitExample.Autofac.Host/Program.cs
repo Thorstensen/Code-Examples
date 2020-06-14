@@ -24,13 +24,10 @@ namespace MasstransitExample.Autofac.Host
             
             do
             {
-                var value = await Task.Run(() =>
-                {
-                    Console.WriteLine("Enter a message to publish. Enter 'q' to quit");
-                    return Console.ReadLine();
-                });
-        
-                if (value.Equals("q"))
+                Console.WriteLine("Enter a message to publish. Enter 'q' to quit");
+               var value = Console.ReadLine();
+               
+                if (!string.IsNullOrEmpty(value) && value.Equals("q"))
                     break;
         
                 await busControl.Publish(new SomethingCrazyHappendEvent
