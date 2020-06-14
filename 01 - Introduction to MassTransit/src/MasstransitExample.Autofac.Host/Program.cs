@@ -21,21 +21,16 @@ namespace MasstransitExample.Autofac.Host
             Console.WriteLine("Starting bus");
             await busControl.StartAsync();
             Console.WriteLine("Bus has started");
-            
-            do
+
+            for (var i = 0; i < 100; i++)
             {
-                Console.WriteLine("Enter a message to publish. Enter 'q' to quit");
-               var value = Console.ReadLine();
-               
-                if (!string.IsNullOrEmpty(value) && value.Equals("q"))
-                    break;
-        
-                await busControl.Publish(new SomethingCrazyHappendEvent
+                var msg = new SomethingCrazyHappendEvent
                 {
-                    What = value
-                });
+                    What = RandomWordGenerator.Generate()
+                };
                 
-            } while (true);
+                await busControl.Publish(msg);
+            }
         }
     }
 }

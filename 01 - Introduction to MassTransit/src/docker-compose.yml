@@ -12,11 +12,11 @@ services:
       interval: 5s
       timeout: 15s
       retries: 1
-  #masstransit:
-  #  container_name: masstransit.demo
-  #  network_mode: host
-  #  build: .
-  #  restart: on-failure
-  #  command: -network host
-  #  depends_on:
-  #    - rabbit
+  masstransit:
+    container_name: masstransit.demo
+    network_mode: host
+    build: .
+    restart: on-failure
+    command: -network host
+    depends_on:
+      - rabbit
