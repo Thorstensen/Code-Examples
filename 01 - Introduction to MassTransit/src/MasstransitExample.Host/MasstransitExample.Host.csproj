@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit.Autofac" Version="7.0.0-develop.2807" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="7.0.0-develop.2807" />
+    </ItemGroup>
+
+</Project>
