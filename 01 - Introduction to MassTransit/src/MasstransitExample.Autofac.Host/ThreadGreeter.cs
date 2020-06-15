@@ -5,15 +5,15 @@ namespace MasstransitExample.Autofac.Host
 {
     public class ThreadGreeter : IThreadGreeter
     {
-        public void Greet(string message)
+        public void Greet(string context, string message)
         {
             var threadId = Thread.CurrentThread.ManagedThreadId;
-            Console.WriteLine($"Greetings from thread '{threadId}'. Message '{message}'");
+            Console.WriteLine($"Context: {context}. Message: Greetings from thread: '{threadId}'. Content: '{message}'");
         }
     }
 
     public interface IThreadGreeter
     {
-        void Greet(string message);
+        void Greet(string context, string message);
     }
 }

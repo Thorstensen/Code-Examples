@@ -14,7 +14,7 @@ namespace MasstransitExample.Autofac.Host
         }
         public Task Consume(ConsumeContext<SomethingCrazyHappendEvent> context)
         {
-            _threadGreeter.Greet(context.Message.What);
+            _threadGreeter.Greet(nameof(SomethingCrazyHappendConsumer), context.Message.What);
             return Task.CompletedTask;
         }
     }
