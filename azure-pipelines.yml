@@ -22,3 +22,11 @@ jobs:
 - job: B
   steps:
   - bash: echo "B"
+
+- job: C
+  steps:
+  - bash: echo "C"
+
+- job: D
+  steps:
+  - bash: echo "DB"
