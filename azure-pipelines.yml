@@ -10,14 +10,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  - group: dev
 
 jobs:
 - job: A
   steps:
-  - bash: echo "A"
+  - bash: echo $(env)
 
 - job: B
   dependsOn: 'A'
