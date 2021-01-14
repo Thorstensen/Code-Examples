@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
   solution: '**/*.sln'
@@ -20,13 +20,16 @@ jobs:
   - bash: echo "A"
 
 - job: B
+  dependsOn: 'A'
   steps:
   - bash: echo "B"
 
 - job: C
+  dependsOn: 'B'
   steps:
   - bash: echo "C"
 
-- job: D
+- job: Curl
+  dependsOn: 'C'
   steps:
-  - bash: echo "DB"
+  - bash: curl -v www.google.com
