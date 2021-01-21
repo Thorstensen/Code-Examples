@@ -4,6 +4,8 @@ services:
     container_name: rabbitmq-3.6.6
     hostname: rabbit
     image: rabbitmq:3.6.6-management
+    logging:
+      driver: none
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -15,6 +17,8 @@ services:
   masstransit:
     container_name: masstransit.demo
     network_mode: host
+    stdin_open: true
+    tty: true
     build: .
     restart: on-failure
     command: -network host
