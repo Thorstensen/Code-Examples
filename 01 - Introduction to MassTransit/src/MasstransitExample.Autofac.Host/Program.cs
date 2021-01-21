@@ -36,10 +36,27 @@ namespace MasstransitExample.Autofac.Host
             string command = string.Empty;
             while(!command.Equals("q", StringComparison.InvariantCultureIgnoreCase))
             {
-                Console.WriteLine("Please enter a command:");
-                command = Console.ReadLine();
-                Console.WriteLine("You wrote: " + command);
+                try 
+                {
+                    Console.WriteLine("Please enter a command:");
+                    command = Console.ReadLine();
+                
+                    var eventToPublish = command switch 
+                    {
+                        "d" => new SomethingCrazyHappendEvent {
+                            What = RandomWordGenerator.Generate()
+                        },
+                    _ => throw new ArgumentException("Unsupported command")
+                    };
+
+                    await busControl.Publish(eventToPublish);
+                }
+                catch(ArgumentException ae)
+                {
+                    Console.WriteLine(ae.Message);
+                }   
             }
+            Console.WriteLine("Goodbye!");
         }
     }
 }
