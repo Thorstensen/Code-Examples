@@ -4,7 +4,7 @@ A short an simple introduction to MassTransit, the free and open-source distribu
 ### How do I run this demo?
 
 1. Navigate to the src folder with your favorite terminal and find `docker-compose.yml`
-2. Found it? Nice. Run the folllowing command `docker-compose up`
+2. Found it? Nice. Run the folllowing command `docker-compose run masstransit`
 
 If you want to debug the code without installing rabbitmq? Run the following docker image:
 
