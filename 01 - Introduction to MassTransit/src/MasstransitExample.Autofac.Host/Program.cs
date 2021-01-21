@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using MassTransit;
 using MasstransitExample.Autofac.Host.Events;
+using MasstransitExample.Autofac.Host.Util;
 
 namespace MasstransitExample.Autofac.Host
 {
@@ -21,35 +23,19 @@ namespace MasstransitExample.Autofac.Host
             await busControl.StartAsync();
             Console.WriteLine("Bus has started");
 
-            // var numberOfMessagesToPublish = 100;
-            // for (var i = 0; i < numberOfMessagesToPublish; i++)
-            // {
-            //     var msg = new SomethingCrazyHappendEvent
-            //     {
-            //         What = RandomWordGenerator.Generate()
-            //     };
-                
-            //     await busControl.Publish(msg);
-            // }
-            
-            // Console.WriteLine($"Finished publishing {numberOfMessagesToPublish} events to RabbitMQ. Bye!");
             string command = string.Empty;
             while(!command.Equals("q", StringComparison.InvariantCultureIgnoreCase))
             {
-                try 
+                try
                 {
+                    var availableActions = EventLibrary.GetEventDefintion();
+                    availableActions.ToList().ForEach(a => Console.WriteLine(a.ToString()));
+                    
                     Console.WriteLine("Please enter a command:");
                     command = Console.ReadLine();
                 
-                    var eventToPublish = command switch 
-                    {
-                        "d" => new SomethingCrazyHappendEvent {
-                            What = RandomWordGenerator.Generate()
-                        },
-                    _ => throw new ArgumentException("Unsupported command")
-                    };
-
-                    await busControl.Publish(eventToPublish);
+                    var eventDefinition = availableActions.FirstOrDefault(p => p.Id == int.Parse(command));
+                    await busControl.Publish(eventDefinition.Event);
                 }
                 catch(ArgumentException ae)
                 {
