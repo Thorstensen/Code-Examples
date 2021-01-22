@@ -26,22 +26,19 @@ namespace MasstransitExample.Autofac.Host
             string command = string.Empty;
             while(!command.Equals("q", StringComparison.InvariantCultureIgnoreCase))
             {
-                try
-                {
-                    var availableActions = EventLibrary.GetEventDefintion();
-                    availableActions.ToList().ForEach(a => Console.WriteLine(a.ToString()));
+                var availableActions = EventLibrary.GetEventDefintion();
+                availableActions.ToList().ForEach(a => Console.WriteLine(a.ToString()));
                     
-                    Console.WriteLine("Please enter a command:");
-                    command = Console.ReadLine();
-                
-                    var eventDefinition = availableActions.FirstOrDefault(p => p.Id == int.Parse(command));
-                    await busControl.Publish(eventDefinition.Event);
-                }
-                catch(ArgumentException ae)
-                {
-                    Console.WriteLine(ae.Message);
-                }   
+                Console.WriteLine("Please enter a command:");
+                command = Console.ReadLine();
+
+                if (command.Equals("q", StringComparison.InvariantCultureIgnoreCase))
+                    break;
+
+                var eventDefinition = availableActions.FirstOrDefault(p => p.Id == int.Parse(command));
+                await busControl.Publish(eventDefinition.Event);
             }
+            
             Console.WriteLine("Goodbye!");
         }
     }
