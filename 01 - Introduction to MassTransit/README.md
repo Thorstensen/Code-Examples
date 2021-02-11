@@ -1,5 +1,5 @@
 ## Introduction to MassTransit
-A short an simple introduction to MassTransit, the free and open-source distributed application framework for .NET https://masstransit-project.com/
+A brief introduction to MassTransit, the free and open-source distributed application framework for .NET https://masstransit-project.com/
 
 ### How do I run this demo?
 
