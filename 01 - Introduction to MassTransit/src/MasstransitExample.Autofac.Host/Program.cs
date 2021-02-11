@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Autofac;
 using MassTransit;
 using MasstransitExample.Autofac.Host.Events;
+using MasstransitExample.Autofac.Host.Observers;
 using MasstransitExample.Autofac.Host.Util;
 
 namespace MasstransitExample.Autofac.Host
@@ -19,6 +20,8 @@ namespace MasstransitExample.Autofac.Host
             var container = containerBuilder.Build();
         
             var busControl = container.Resolve<IBusControl>();
+            busControl.ConnectReceiveObserver(new AnObserver());
+            
             Console.WriteLine("Starting bus");
             await busControl.StartAsync();
             Console.WriteLine("Bus has started");

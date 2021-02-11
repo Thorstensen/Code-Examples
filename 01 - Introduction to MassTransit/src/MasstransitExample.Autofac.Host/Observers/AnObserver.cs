@@ -17,7 +17,6 @@ namespace MasstransitExample.Autofac.Host.Observers
 
         public Task PostReceive(ReceiveContext context)
         {
-            // called after the message has been received and processed
             return Task.CompletedTask;
         }
 

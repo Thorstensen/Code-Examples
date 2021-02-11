@@ -17,7 +17,10 @@ namespace MasstransitExample.Autofac.Host.Util
                                   ),
                 new EventDefinition(2, "Publish a event that correlates",
                                         new CorrelationEventOne()
-                                  ),        
+                                  ),
+                new EventDefinition(3, "Publish an event that causes exception",
+                                        new ThisThrowsAnExceptionEvent()
+                ),
             };
         }
     }

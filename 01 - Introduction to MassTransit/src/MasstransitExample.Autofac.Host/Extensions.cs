@@ -25,21 +25,24 @@ namespace MasstransitExample.Autofac.Host
                         {
                             //configure all consumers that Autofac added. 
                             endpoint.ConfigureConsumers(ctx);
-                        
+
                             //Prefetch count = Un-acked messages sent from the broker to MassTransit. 
                             //Concurrency limit = Acts as a semaphore to limit the numbers of concurrent tasks to run of this consumer
                             //For systems that is supposed to process alot of data, these values should be set to a "high value".
                             //There is not recommended values for these two, so you just have to play around with them. 
-                            endpoint.PrefetchCount = 16; 
+                            endpoint.PrefetchCount = 16;
                             endpoint.UseConcurrencyLimit(10);
-                        
+
                             //If an exception occurs inside a consumer, we can configure the retry strategy. 
                             endpoint.UseRetry(retry =>
                             {
                                 //retry.Exponential()
                                 //retry.Immediate()
                                 //retry.Interval()
-                                retry.Incremental(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+                                retry.Incremental(2, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+
+                                //If a consumer throws an ArgumentException, ignore this and do not retry it.
+                                retry.Ignore<ArgumentException>();
                             });
                         });
                     }); 
