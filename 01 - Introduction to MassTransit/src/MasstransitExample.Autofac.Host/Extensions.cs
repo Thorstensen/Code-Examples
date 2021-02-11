@@ -2,6 +2,8 @@ using System;
 using Autofac;
 using GreenPipes;
 using MassTransit;
+using MassTransit.Context;
+using MasstransitExample.Autofac.Host.Events;
 
 namespace MasstransitExample.Autofac.Host
 {
@@ -43,6 +45,8 @@ namespace MasstransitExample.Autofac.Host
                     }); 
                 });
             });
+
+            MessageCorrelation.UseCorrelationId<CorrelatedEvent>(x => x.CorrelationId = Guid.NewGuid());
         }
     }
 }

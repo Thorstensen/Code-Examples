@@ -31,7 +31,7 @@ namespace MasstransitExample.Autofac.Host
                     
                 Console.WriteLine("Please enter a command:");
                 command = Console.ReadLine();
-
+                
                 if (command.Equals("q", StringComparison.InvariantCultureIgnoreCase))
                     break;
 

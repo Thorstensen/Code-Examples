@@ -14,7 +14,10 @@ namespace MasstransitExample.Autofac.Host.Util
                                         {
                                                 What = RandomWordGenerator.Generate()
                                         }
-                                  )
+                                  ),
+                new EventDefinition(2, "Publish a event that correlates",
+                                        new CorrelationEventOne()
+                                  ),        
             };
         }
     }
