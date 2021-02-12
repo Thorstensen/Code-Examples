@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionalMassTransit", "TransactionalMassTransit\TransactionalMassTransit.csproj", "{1683B05B-1A03-4988-A442-9D7D290C6B1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1683B05B-1A03-4988-A442-9D7D290C6B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1683B05B-1A03-4988-A442-9D7D290C6B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1683B05B-1A03-4988-A442-9D7D290C6B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1683B05B-1A03-4988-A442-9D7D290C6B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF55724F-58AF-40F6-A7EC-D507C474D8C9}
+	EndGlobalSection
+EndGlobal
