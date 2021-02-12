@@ -1,5 +1,5 @@
 ## Transactions in MassTransit
-A demo showing how to use the TransactionBusControl In MassTransit with RabbitMQ
+A demo showing how to use the TransactionalEnlistmentBus in MassTransit with RabbitMQ
 
 ### How do I run this demo?
 It doesnt make sense to run this demo in a docker container, so you'll need to have 
